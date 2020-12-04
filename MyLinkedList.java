@@ -1,4 +1,4 @@
-/*This is a linked list data structure implementation in java. This is designed by Shivendra Raj Singh.*/
+/*This is a linked list data structure implementation in java. This is designed and edited by Shivendra Raj Singh.*/
 public class MyLinkedList <X> {
 	Node<X> head;
 	void add(X data)
