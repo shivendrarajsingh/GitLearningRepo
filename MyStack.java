@@ -1,5 +1,4 @@
 /*This code is for stack data structure. This class is totally implemented with linked list*/
-package vectorsAndStacks;
 
 public class MyStack<E> {
 	private static final Exception NullPointerException = null;
