@@ -1,0 +1,83 @@
+/*This is an array deque data structure represented using linked list*/
+package dequeue;
+
+public class MyArrayDeque<E> {
+	
+	Node<E> head;
+	Node<E> tail;
+	void addFirst(E data) throws Exception
+	{
+		Node<E> new_node = new Node<>(data);
+		if(head == null && tail == null)
+		{
+			head = tail = new_node;
+			return;
+		}
+		head.prev = new_node;
+		new_node.next = head;
+		head = new_node;
+	}
+	void addLast(E data) throws Exception
+	{
+		Node<E> new_node = new Node<>(data);
+		if(head == null && tail == null)
+		{
+			head = tail = new_node;
+			return;
+		}
+		tail.next = new_node;
+		new_node.prev = tail;
+		tail = new_node;
+	}
+	E removeFirst()throws Exception
+	{
+		if(head == null)
+			throw new Exception("Cannot remove from an empty deque");
+		E temp = head.data;
+		head = head.next;
+		if(head == null)
+		{
+			tail = null;
+			return temp;
+		}
+		head.prev = null;
+		return temp;
+	}
+	E removeLast()throws Exception
+	{
+		if(tail == null)
+			throw new Exception("Cannot remove from an empty deque");
+		E temp = tail.data;
+		tail = tail.prev;
+		if(tail == null)
+		{
+			head = null;
+			return temp;
+		}
+		tail.next = null;
+		return temp;
+	}
+	E getFirst()throws Exception
+	{
+		if(head == null && tail == null)
+			throw new Exception("No element present in the deque");
+		return head.data;
+	}
+	E getLast()throws Exception
+	{
+		if(head == null && tail == null)
+			throw new Exception("No element present in the deque");
+		return tail.data;
+	}
+	public static class Node<E> {
+		E data;
+		Node<E> prev;
+		Node<E> next;
+		Node(E data)
+		{
+			this.data = data;
+			this.prev = null;
+			this.next = null;
+		}
+	}
+}
